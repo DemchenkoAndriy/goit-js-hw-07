@@ -15,6 +15,13 @@ gallery.insertAdjacentHTML("afterbegin", imagesList)
     
 gallery.addEventListener('click', zoomImg)
 
+
+    let lightbox = new SimpleLightbox('.gallery a', {
+        captions: true,
+        captionsData: 'alt',
+        captionDelay:250
+    });
+
 function zoomImg(e) {
 
  e.preventDefault();
@@ -24,9 +31,4 @@ function zoomImg(e) {
 
 
 
-    let lightbox = new SimpleLightbox('.gallery a', {
-        captions: true,
-        captionsData: 'alt',
-        captionDelay:250
-    });
 }

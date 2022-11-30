@@ -33,17 +33,29 @@ function zoomImg(e) {
 
   
     const instance = basicLightbox.create(`
-    <img src="${e.target.dataset.source}" >`);
+    <img src="${e.target.dataset.source}" >`, {
+      onShow: (instance) => {
+        gallery.addEventListener("keydown", EscapeListener);
+      },
+
+      onClose: (instance) => {
+        gallery.removeEventListener("keydown", EscapeListener);
+      },
+    });
 
     instance.show();
    
-document.addEventListener("keydown", e => {
+  
+  function EscapeListener(params) {
+    document.addEventListener("keydown", e => {
   if (e.key === "Escape") {
       instance.close();
     }
 });
 
 }
+  }
+
 
 
 
